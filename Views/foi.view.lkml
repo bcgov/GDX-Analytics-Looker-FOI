@@ -1,10 +1,5 @@
 view: foi {
-  derived_table: {
-    sql: SELECT
-         *
-      FROM static.foi
-      ;;
-  }
+  sql_table_name: foi.foi;;
 
     dimension: ministry {
       type: string
@@ -14,88 +9,98 @@ view: foi {
     }
   dimension: ministry_and_type {
     type: string
-    sql: ${TABLE}.ministry || ' - ' ||  ${TABLE}."Type";;
+    sql: ${TABLE}.ministry || ' - ' ||  ${TABLE}.type;;
     drill_fields: [applicant]
     group_label: "Request Info"
   }
 
+  dimension: organization_code {
+    type: string
+    sql: SPLIT_PART(${TABLE}.request_id, '-',1) ;;
+    group_label: "Request Info"
+  }
 
    dimension: request {
     type: string
-    sql: ${TABLE}."Request #" ;;
+    sql: ${TABLE}.request_id ;;
     group_label: "Request Info"
   }
   dimension: type {
     type: string
-    sql: ${TABLE}."Type" ;;
+    sql: ${TABLE}.type ;;
     group_label: "Request Info"
   }
   dimension: applicant {
     type: string
-    sql: ${TABLE}."Applicant" ;;
+    sql: ${TABLE}.applicant_type ;;
     group_label: "Request Info"
     drill_fields: [ministry]
   }
   dimension_group: due_date {
     type: time
     timeframes: [date, day_of_month, week, month, month_name, quarter, fiscal_quarter, year]
-    sql: ${TABLE}."Due Date" ;;
+    sql: ${TABLE}.duedate ;;
+    group_label: "Due Date"
   }
   dimension_group: start_date {
     type: time
     timeframes: [date, day_of_month, week, month, month_name, quarter, fiscal_quarter, year]
-    sql: ${TABLE}."Start Date" ;;
+    sql: ${TABLE}.start_date ;;
+    group_label: "Start Date"
   }
   dimension_group: end_date {
     type: time
     timeframes: [date, day_of_month, week, month, month_name, quarter, fiscal_quarter, year]
-    sql: ${TABLE}."End Date" ;;
+    sql: ${TABLE}.end_date ;;
+    group_label: "End Date"
   }
 
   dimension: status {
     type: string
-    sql: ${TABLE}."Status" ;;
+    sql: ${TABLE}.status ;;
     group_label: "Outcome"
   }
   dimension: disposition {
     type: string
-    sql: ${TABLE}."Disposition" ;;
+    sql: ${TABLE}.disposition ;;
     group_label: "Outcome"
   }
   dimension: on_hold_days {
     type: string
-    sql: ${TABLE}."On Hold Days" ;;
+    sql: ${TABLE}.on_hold_days ;;
     group_label: "Timing"
   }
   dimension: processing_days {
     type: number
-    sql: ${TABLE}."Processing Days" ;;
+    sql: ${TABLE}.total_process_days ;;
     group_label: "Timing"
   }
   dimension: overdue_days {
     type: number
-    sql: ${TABLE}."Overdue Days" ;;
+    sql: ${TABLE}.days_overdue ;;
     group_label: "Timing"
     }
   dimension: extension {
     type: yesno
-    sql: ${TABLE}."Extension" ;;
+    sql: CASE WHEN ${TABLE}.extension = 'Y' THEN true
+              WHEN ${TABLE}.extension = 'N' THEN false
+              ELSE NULL END;;
     group_label: "Timing"
   }
   dimension: fees_paid {
     type: number
     value_format: "$#,##0.00"
-    sql: ${TABLE}."Fees Paid" ;;
+    sql: ${TABLE}.fees_paid ;;
     group_label: "Outcome"
   }
   dimension: publication {
     type: string
-    sql: ${TABLE}."Publication" ;;
+    sql: ${TABLE}.publication ;;
     group_label: "Outcome"
   }
-  dimension: reason {
+  dimension: publication_reason {
     type: string
-    sql: ${TABLE}."Reason" ;;
+    sql: ${TABLE}.publication_reason ;;
     group_label: "Outcome"
   }
 
@@ -165,7 +170,5 @@ view: foi {
     sql: CASE WHEN ${overdue_days} > 0 THEN 1 END ;;
     group_label: "Overdue Days"
   }
-
-
 
 }
