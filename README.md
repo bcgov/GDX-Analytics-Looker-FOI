@@ -1,5 +1,3 @@
-# GDX-Analytics-Looker-FOI
-
 ## GDX Looker
 
 This Block represents an instance of the Government of British Columbia’s [LookML](https://docs.looker.com/data-modeling/learning-lookml/what-is-lookml) project used for Web Analytics. 
