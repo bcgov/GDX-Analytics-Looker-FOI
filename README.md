@@ -6,6 +6,10 @@ This is the GDX Analytics project for the FOI Report Download Lookml.
 
 This project includes Looker LookML code to support measurement and reporting for the FOI Report Download system.
 
+## Requirements
+ 
+Requires deployment onto a [Looker](https://looker.com/) instance with access to database tables as referenced by the '*.lkml' files.
+
 ## Project Status
 
 This project is in production and the GDX Analytics Team will continue to update and maintain the project as required.
