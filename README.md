@@ -1,6 +1,6 @@
 ## GDX Analytic Looker FOI
 
-This is the GDX Analytics project for the FOI Project's Lookml.
+This is the GDX Analytics project for the FOI Report Download Lookml.
 
 ## Features
 
@@ -14,7 +14,7 @@ This project is in production and the GDX Analytics Team will continue to update
 
 [GDX-Analytics/](https://github.com/bcgov/GDX-Analytics/)
 
-Represents an instance of Government of British Columbia’s Snowplow tracking. This includes pushing custom events to the Snowplow Tracker, and generation of cryptographically signed SSO embed URL pointing to a dashboard.
+This is the central repository for work by the GDX Analytics Team.
 
 [foi-report-download](https://github.com/bcgov/foi-report-download)
 
