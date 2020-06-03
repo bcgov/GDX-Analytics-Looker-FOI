@@ -1,14 +1,14 @@
-## GDX Looker
+## GDX Analytic Looker FOI
 
-This Block represents an instance of the Government of British Columbia’s [LookML](https://docs.looker.com/data-modeling/learning-lookml/what-is-lookml) project used for Web Analytics. 
+This is the GDX Analytics project for the FOI Project's Lookml.
 
 ## Features
 
-Looker is a data vision tool that is used with Snowplow Analytics. It presents the data in various formats such as visuals, tables and maps and allows the user to customize the results with an interactive model.
+This project includes Looker LookML code to support measurement and reporting for the FOI Report Download system.
 
 ## Project Status
 
-This project is currently at final development phases, however, GDX Analytics team will continue to update and maintain the code as required.
+This project is in production and the GDX Analytics Team will continue to update and maintain the project as required.
 
 ## Relevant Repositories
 
@@ -16,14 +16,20 @@ This project is currently at final development phases, however, GDX Analytics te
 
 Represents an instance of Government of British Columbia’s Snowplow tracking. This includes pushing custom events to the Snowplow Tracker, and generation of cryptographically signed SSO embed URL pointing to a dashboard.
 
-## Getting Help
+[foi-report-download](https://github.com/bcgov/foi-report-download)
 
-Please contact the GDX Service desk via the [GCPE GDX Client Service Desk Portal](https://apps.gcpe.gov.bc.ca/jira/servicedesk/customer/portal/9). For inquiries about starting a new analytics account please contact the GDX Analytics Team.
+This is an intranet web-app allowing authenticated users to specify filters and download FOI report in PDF or Excel format.
 
-## Contributors
-
-The GDX Analytics Team are the main contributors to this project and maintain the code.
-
+## Getting Help or Reporting an Issue
+ 
+For any questions regarding this project, or for inquiries about starting a new analytics account, please contact the GDX Analytics Team.
+ 
+## How to Contribute
+ 
+If you would like to contribute to the guide, please see our [CONTRIBUTING](CONTRIBUTING.md) guideleines.
+ 
+Please note that this project is released with a [Contributor Code of Conduct](CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
+ 
 ## License
 
 Copyright 2015 Province of British Columbia
