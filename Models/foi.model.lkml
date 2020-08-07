@@ -7,6 +7,10 @@ week_start_day: sunday
 fiscal_month_offset: 3
 
 # include all the views
-include: "/Views/foi.view"
+include: "/Views/*"
 
 explore: foi {}
+
+explore: foi_report {
+  persist_for: "60 minutes"
+}
