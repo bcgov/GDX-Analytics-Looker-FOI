@@ -105,7 +105,7 @@ view: foi_report {
   }
 
   dimension: is_overdue {
-    description: "is_overdue"
+    description: "Is the record marked as overdue or not"
     type: string
     suggestions: ["Yes","No","All"]
     sql: ${TABLE}.is_overdue;;
