@@ -1,3 +1,5 @@
+include: "//snowplow_web_block/Includes/date_comparisons_common.view"
+
 view: foi_report {
   derived_table: {
     sql: SELECT wp.id as page_view_id, foi.*
@@ -7,6 +9,13 @@ view: foi_report {
     distribution_style: all
     persist_for: "2 hours"
   }
+
+  extends: [date_comparisons_common]
+
+  dimension_group: filter_start {
+    sql: ${TABLE}.root_tstamp  ;;
+  }
+
 
   dimension: page_view_id {
     description: "Unique page view ID"
