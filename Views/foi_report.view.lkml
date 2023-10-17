@@ -1,4 +1,4 @@
-# Version:     2.0.0
+# Version:     2.0.1
 include: "//snowplow_web_block/Includes/date_comparisons_common.view"
 
 view: foi_report {
@@ -14,45 +14,38 @@ view: foi_report {
         file_format,
         start_date_start,
         start_date_end,
-        CASE WHEN organization LIKE '%AED%' THEN 1 ELSE NULL END AS AED_count,
         CASE WHEN organization LIKE '%AGR%' THEN 1 ELSE NULL END AS AGR_count,
-        CASE WHEN organization LIKE '%BRD%' THEN 1 ELSE NULL END AS BRD_count,
         CASE WHEN organization LIKE '%CAS%' THEN 1 ELSE NULL END AS CAS_count,
         CASE WHEN organization LIKE '%CFD%' THEN 1 ELSE NULL END AS CFD_count,
-        CASE WHEN organization LIKE '%CSC%' THEN 1 ELSE NULL END AS CSC_count,
+        CASE WHEN organization LIKE '%COR%' THEN 1 ELSE NULL END AS COR_count,
         CASE WHEN organization LIKE '%CTZ%' THEN 1 ELSE NULL END AS CTZ_count,
         CASE WHEN organization LIKE '%DAS%' THEN 1 ELSE NULL END AS DAS_count,
         CASE WHEN organization LIKE '%EAO%' THEN 1 ELSE NULL END AS EAO_count,
-        CASE WHEN organization LIKE '%EDU%' THEN 1 ELSE NULL END AS EDU_count,
-        CASE WHEN organization LIKE '%EGM%' THEN 1 ELSE NULL END AS EGM_count,
-        CASE WHEN organization LIKE '%EMB%' THEN 1 ELSE NULL END AS EMB_count,
+        CASE WHEN organization LIKE '%ECC%' THEN 1 ELSE NULL END AS ECC_count,
+        CASE WHEN organization LIKE '%EMC%' THEN 1 ELSE NULL END AS EMC_count,
         CASE WHEN organization LIKE '%EML%' THEN 1 ELSE NULL END AS EML_count,
         CASE WHEN organization LIKE '%FIN%' THEN 1 ELSE NULL END AS FIN_count,
         CASE WHEN organization LIKE '%FOR%' THEN 1 ELSE NULL END AS FOR_count,
         CASE WHEN organization LIKE '%GCP%' THEN 1 ELSE NULL END AS GCP_count,
-        CASE WHEN organization LIKE '%HOU%' THEN 1 ELSE NULL END AS HOU_count,
+        CASE WHEN organization LIKE '%HSG%' THEN 1 ELSE NULL END AS HSG_count,
         CASE WHEN organization LIKE '%HTH%' THEN 1 ELSE NULL END AS HTH_count,
         CASE WHEN organization LIKE '%IRR%' THEN 1 ELSE NULL END AS IRR_count,
-        CASE WHEN organization LIKE '%JAG%' THEN 1 ELSE NULL END AS JAG_count,
-        CASE WHEN organization LIKE '%JTI%' THEN 1 ELSE NULL END AS JTI_count,
-        CASE WHEN organization LIKE '%JER%' THEN 1 ELSE NULL END AS JER_count,
+        CASE WHEN organization LIKE '%JED%' THEN 1 ELSE NULL END AS JED_count,
         CASE WHEN organization LIKE '%LBR%' THEN 1 ELSE NULL END AS LBR_count,
         CASE WHEN organization LIKE '%LDB%' THEN 1 ELSE NULL END AS LDB_count,
-        CASE WHEN organization LIKE '%LWR%' THEN 1 ELSE NULL END AS LWR_count,
         CASE WHEN organization LIKE '%MAG%' THEN 1 ELSE NULL END AS MAG_count,
-        CASE WHEN organization LIKE '%MMA%' THEN 1 ELSE NULL END AS MMA_count,
         CASE WHEN organization LIKE '%MHA%' THEN 1 ELSE NULL END AS MHA_count,
-        CASE WHEN organization LIKE '%MIT%' THEN 1 ELSE NULL END AS MIT_count,
+        CASE WHEN organization LIKE '%MMA%' THEN 1 ELSE NULL END AS MMA_count,
         CASE WHEN organization LIKE '%MOE%' THEN 1 ELSE NULL END AS MOE_count,
-        CASE WHEN organization LIKE '%MSB%' THEN 1 ELSE NULL END AS MSB_count,
         CASE WHEN organization LIKE '%MSD%' THEN 1 ELSE NULL END AS MSD_count,
-        CASE WHEN organization LIKE '%NGD%' THEN 1 ELSE NULL END AS NGD_count,
         CASE WHEN organization LIKE '%OCC%' THEN 1 ELSE NULL END AS OCC_count,
         CASE WHEN organization LIKE '%OOP%' THEN 1 ELSE NULL END AS OOP_count,
         CASE WHEN organization LIKE '%PSA%' THEN 1 ELSE NULL END AS PSA_count,
+        CASE WHEN organization LIKE '%PSE%' THEN 1 ELSE NULL END AS PSE_count,
         CASE WHEN organization LIKE '%PSS%' THEN 1 ELSE NULL END AS PSS_count,
         CASE WHEN organization LIKE '%TAC%' THEN 1 ELSE NULL END AS TAC_count,
-        CASE WHEN organization LIKE '%TRA%' THEN 1 ELSE NULL END AS TRA_count
+        CASE WHEN organization LIKE '%TRA%' THEN 1 ELSE NULL END AS TRA_count,
+        CASE WHEN organization LIKE '%WLR%' THEN 1 ELSE NULL END AS WLR_count
 
       FROM atomic.ca_bc_gov_foi_foi_report_2 AS foi
       JOIN atomic.com_snowplowanalytics_snowplow_web_page_1 AS wp ON foi.root_id = wp.root_id AND foi.root_tstamp = wp.root_tstamp
@@ -214,15 +207,7 @@ view: foi_report {
     group_label: "Overdue Counts"
   }
 
-  measure: AED_count {
-    group_label: "Organizations"
-    type: sum
-  }
   measure: AGR_count {
-    group_label: "Organizations"
-    type: sum
-  }
-  measure: BRD_count {
     group_label: "Organizations"
     type: sum
   }
@@ -234,7 +219,7 @@ view: foi_report {
     group_label: "Organizations"
     type: sum
   }
-  measure: CSC_count {
+  measure: COR_count {
     group_label: "Organizations"
     type: sum
   }
@@ -250,15 +235,11 @@ view: foi_report {
     group_label: "Organizations"
     type: sum
   }
-  measure: EDU_count {
+  measure: ECC_count {
     group_label: "Organizations"
     type: sum
   }
-  measure: EGM_count {
-    group_label: "Organizations"
-    type: sum
-  }
-  measure: EMB_count {
+  measure: EMC_count {
     group_label: "Organizations"
     type: sum
   }
@@ -278,7 +259,7 @@ view: foi_report {
     group_label: "Organizations"
     type: sum
   }
-  measure: HOU_count {
+  measure: HSG_count {
     group_label: "Organizations"
     type: sum
   }
@@ -290,15 +271,7 @@ view: foi_report {
     group_label: "Organizations"
     type: sum
   }
-  measure: JAG_count {
-    group_label: "Organizations"
-    type: sum
-  }
-  measure: JTI_count {
-    group_label: "Organizations"
-    type: sum
-  }
-  measure: JER_count {
+  measure: JED_count {
     group_label: "Organizations"
     type: sum
   }
@@ -310,15 +283,7 @@ view: foi_report {
     group_label: "Organizations"
     type: sum
   }
-  measure: LWR_count {
-    group_label: "Organizations"
-    type: sum
-  }
   measure: MAG_count {
-    group_label: "Organizations"
-    type: sum
-  }
-  measure: MMA_count {
     group_label: "Organizations"
     type: sum
   }
@@ -326,7 +291,7 @@ view: foi_report {
     group_label: "Organizations"
     type: sum
   }
-  measure: MIT_count {
+  measure: MMA_count {
     group_label: "Organizations"
     type: sum
   }
@@ -334,15 +299,7 @@ view: foi_report {
     group_label: "Organizations"
     type: sum
   }
-  measure: MSB_count {
-    group_label: "Organizations"
-    type: sum
-  }
   measure: MSD_count {
-    group_label: "Organizations"
-    type: sum
-  }
-  measure: NGD_count {
     group_label: "Organizations"
     type: sum
   }
@@ -370,7 +327,10 @@ view: foi_report {
     group_label: "Organizations"
     type: sum
   }
-
+  measure: WLR_count {
+    group_label: "Organizations"
+    type: sum
+  }
   dimension: label {
     sql: 'Organization' ;;
   }
