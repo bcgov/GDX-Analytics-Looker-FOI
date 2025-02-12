@@ -3,7 +3,7 @@
 ---
 
 This is the GDX Analytics project for the FOI Report Download Lookml.
-The following line was added to test if this repository was correctly linked to looker dev.
+This edit is to test the webhook setup
 
 ## Features
 
